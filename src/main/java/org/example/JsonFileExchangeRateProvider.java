@@ -4,21 +4,29 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
-public class JsonFileExchangeRateProvider implements ExchangeRateProvider{
-    private final String filePath;
+public class JsonFileExchangeRateProvider  {
+    ObjectMapper objectMapper = new ObjectMapper();
+    List<CurrencyModel> rate = loadRatesFromFile("/Users/alfa/IdeaProjects/currencyRate/src/main/resources/exchange_rates.json");
 
-    public JsonFileExchangeRateProvider(String filePath) {
-        this.filePath = filePath;
-    }
-    @Override
-    public Map getExchangeRates() {
-        ObjectMapper objectMapper = new ObjectMapper();
+    public List<CurrencyModel> loadRatesFromFile(String filePath) {
         try {
-            return objectMapper.readValue(new File("/Users/alfa/IdeaProjects/currencyRate/src/main/resources/exchange_rates.json"),Map.class);
+            var currencyRate = objectMapper.readValue(new File(filePath), CurrencyDto.class);
+            return currencyRate.getRates();
         } catch (IOException e) {
             throw new RuntimeException("Не удалось прочитать курсы валют из файла.", e);
+
         }
     }
+
+    public double getRate(String targetCurrency) {
+        CurrencyModel cur = rate.stream().filter(s -> s.getName().toLowerCase()
+                        .equals(targetCurrency.toLowerCase())).findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Unknown currency: " + targetCurrency));
+
+        return cur.getPrice();
+    }
+
 }

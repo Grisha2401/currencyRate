@@ -1,21 +1,11 @@
 package org.example;
 
-import java.util.Map;
+import java.util.List;
 
-public class CurrencyConverter {
-    private final ExchangeRateProvider exchangeRateProvider;
+public class CurrencyConverter implements CurrencyRate {
 
-    public CurrencyConverter(ExchangeRateProvider exchangeRateProvider) {
-        this.exchangeRateProvider = exchangeRateProvider;
-    }
-
-    public double convect(double ammountRur, String targetCurrency) {
-        Map<String, Double> rate = exchangeRateProvider.getExchangeRates();
-        Double cur = rate.get(targetCurrency.toLowerCase());
-        System.out.println(cur);
-        if (rate == null) {
-            throw new IllegalArgumentException("Unknown currency: " + targetCurrency);
-        }
-        return ammountRur/cur;
+    @Override
+    public double convect(double rateIn, double rateUser) {
+        return rateIn/rateUser;
     }
 }
