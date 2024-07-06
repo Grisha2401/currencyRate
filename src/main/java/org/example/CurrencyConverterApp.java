@@ -3,7 +3,7 @@ package org.example;
 public class CurrencyConverterApp {
     private final UserInteractionInterface userInteraction;
     public final CurrencyConverter currencyConverter;
-    public final  JsonFileExchangeRateProvider jsonFileExchangeRateProvider;
+    public final JsonFileExchangeRateProvider jsonFileExchangeRateProvider;
 
     public CurrencyConverterApp(UserInteractionInterface userInteraction, CurrencyConverter currencyConverter, JsonFileExchangeRateProvider jsonFileExchangeRateProvider) {
         this.userInteraction = userInteraction;
@@ -12,11 +12,16 @@ public class CurrencyConverterApp {
     }
 
     public void run() {
-        var amount = userInteraction.askForAmount("Введите сумму которую хотите поменять: ");
+        while (true) {
+            System.out.print("Введите сумму которую хотите поменять: ");
 
-        var fromCurrency = userInteraction.askForCurrency("Введиту валюту Например usd : ");
+            var amount = userInteraction.askForAmount();
+            System.out.print("Введиту валюту Например usd : ");
 
-        userInteraction.showResult(amount, fromCurrency, currencyConverter.convect(amount,jsonFileExchangeRateProvider.getRate(fromCurrency)));
+            var fromCurrency = userInteraction.askForCurrency();
+
+            userInteraction.showResult(amount, fromCurrency, currencyConverter.convect(amount, jsonFileExchangeRateProvider.getRate(fromCurrency)));
+        }
     }
 
 }

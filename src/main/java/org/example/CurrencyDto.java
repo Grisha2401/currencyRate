@@ -3,25 +3,27 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CurrencyDto {
-    private List<CurrencyModel> rates = new ArrayList<>();
+    private Set<CurrencyModel> rates = new HashSet<>();
 
     @JsonAnySetter
     public void addRate(String name, double price) {
         rates.add(new CurrencyModel(name, price));
     }
 
-    public List<CurrencyModel> getRates() {
+    public Set<CurrencyModel> getRates() {
         return rates;
     }
 
-    public void setRates(List<CurrencyModel> rates) {
+    public void setRates(HashSet<CurrencyModel> rates) {
         this.rates = rates;
     }
 
-    public List getListRate(){
+    public Set<CurrencyModel> getListRate() {
         return rates;
     }
 }

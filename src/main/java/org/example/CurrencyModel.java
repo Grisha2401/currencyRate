@@ -2,7 +2,7 @@ package org.example;
 
 public class CurrencyModel {
 
-   private String name;
+    private String name;
     private double price;
 
 

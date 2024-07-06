@@ -6,6 +6,6 @@ public class CurrencyConverter implements CurrencyRate {
 
     @Override
     public double convect(double rateIn, double rateUser) {
-        return rateIn/rateUser;
+        return rateIn / rateUser;
     }
 }

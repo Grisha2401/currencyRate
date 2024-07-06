@@ -2,7 +2,7 @@ package org.example;
 
 public interface UserInteractionInterface {
 
-    String askForCurrency(String prompt);
-    double askForAmount(String prompt);
+    String askForCurrency();
+    double askForAmount();
     void showResult(double amount, String fromCurrency, double convertedAmount);
 }
