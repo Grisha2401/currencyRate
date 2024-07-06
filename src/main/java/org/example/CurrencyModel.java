@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class CurrencyModel {
 
     private String name;
@@ -28,5 +30,18 @@ public class CurrencyModel {
     public CurrencyModel(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CurrencyModel that = (CurrencyModel) o;
+        return Double.compare(price, that.price) == 0 && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price);
     }
 }
