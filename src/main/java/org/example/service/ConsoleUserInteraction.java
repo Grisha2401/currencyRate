@@ -1,8 +1,10 @@
-package org.example;
+package org.example.service;
+
+import org.example.provider.UserInteractionProvider;
 
 import java.util.Scanner;
 
-public class ConsoleUserInteraction implements UserInteractionInterface {
+public class ConsoleUserInteraction implements UserInteractionProvider {
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
