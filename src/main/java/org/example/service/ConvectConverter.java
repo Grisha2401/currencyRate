@@ -1,8 +1,8 @@
 package org.example.service;
 
-import org.example.provider.ConvectRateProvider;
+import org.example.interfRates.IConvectRate;
 
-public class ConvectConverterProvider implements ConvectRateProvider {
+public class ConvectConverter implements IConvectRate {
 
     @Override
     public double convectRate(double rateIn, double rateUser) {

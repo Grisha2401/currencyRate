@@ -1,10 +1,10 @@
 package org.example.service;
 
-import org.example.provider.UserInteractionProvider;
+import org.example.interfRates.IUserCurrencyInteraction;
 
 import java.util.Scanner;
 
-public class ConsoleUserInteraction implements UserInteractionProvider {
+public class ConsoleIUserCurrencyInteraction implements IUserCurrencyInteraction {
     private final Scanner scanner = new Scanner(System.in);
 
     @Override

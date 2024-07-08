@@ -1,11 +1,11 @@
 package org.example.service;
 
 import org.example.model.CurrencyModel;
-import org.example.provider.CurrencyRateProvider;
+import org.example.interfRates.ICurrencyRate;
 
 import java.util.Set;
 
-public class CurrencyRateProviderImpl implements CurrencyRateProvider {
+public class CurrencyRateImpl implements ICurrencyRate {
     @Override
     public double getRate(Set<CurrencyModel> rates, String targetCurrency) {
         CurrencyModel cur = rates.stream().filter(s -> s.getName().toLowerCase()

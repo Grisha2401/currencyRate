@@ -1,6 +1,6 @@
-package org.example.provider;
+package org.example.interfRates;
 
-public interface UserInteractionProvider {
+public interface IUserCurrencyInteraction {
 
     String askForCurrency();
     double askForAmount();
